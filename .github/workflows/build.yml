@@ -30,8 +30,10 @@ jobs:
       - uses: docker/metadata-action@v5
         id: meta
         with:
-          images: ${{ env.REGISTRY }}/php-laravel
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: ${{ matrix.tag }}
+          labels: |
+            org.opencontainers.image.title=php-laravel
 
       - uses: docker/build-push-action@v5
         with:
